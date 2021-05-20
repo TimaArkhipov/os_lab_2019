@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I.  #C помощью `-I.' вы можете указать поиск в каталоге, который был текущим, когда вызывался компилятор
 
 sequential_min_max : utils.o find_min_max.o utils.h find_min_max.h
 	$(CC) -o sequential_min_max find_min_max.o utils.o sequential_min_max.c $(CFLAGS)
@@ -12,6 +12,9 @@ utils.o : utils.h
 
 find_min_max.o : utils.h find_min_max.h
 	$(CC) -o find_min_max.o -c find_min_max.c $(CFLAGS)
+
+myexec: myexec.o
+	$(CC) -o myexec myexec.o $(CFLAGS)
 
 clean :
 	rm utils.o find_min_max.o sequential_min_max parallel_min_max
