@@ -160,6 +160,13 @@ int main(int argc, char **argv)
   int number_segment = array_size / pnum;
   struct MinMax MyMinMax;
 
+  if(timeout != -1)
+  {
+      printf("\nSet allarm on %d sec\n",timeout);
+      alarm(timeout); //Через 10 секунд выполняет доставку сигнала SIGALRM
+      signal(SIGALRM, kill_all); // Перехватывает сигнал и передаёт на обработку функции kill_all
+  }
+
   for (int i = 0; i < pnum; i++) 
   {// fork и выполнение работы дочерними процессами
     pid_t pid = fork(); 
@@ -208,13 +215,6 @@ int main(int argc, char **argv)
       printf("Fork failed!\n");
       return 1;
     }
-  }
-
-  if(timeout != -1)
-  {
-      printf("\nSet allarm on %d sec\n",timeout);
-      alarm(timeout); //Через 10 секунд выполняет доставку сигнала SIGALRM
-      signal(SIGALRM, kill_all); // Перехватывает сигнал и передаёт на обработку функции kill_all
   }
 
   printf("Timeout now: %d\n" ,timeout);// выводит время перед началом таймаута
