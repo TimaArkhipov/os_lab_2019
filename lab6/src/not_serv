@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./client --k 10 --mod 4 --servers ser.txt

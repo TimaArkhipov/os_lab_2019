@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./server --port 8889 --tnum 4 &
+./server --port 8887 --tnum 4 &
+./client --k 10 --mod 4 --servers ser.txt

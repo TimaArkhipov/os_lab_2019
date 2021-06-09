@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define SERV_PORT 10050
+#define SERV_PORT 20001
 #define BUFSIZE 100
 #define SADDR struct sockaddr
 
